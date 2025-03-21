@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Manager</title>
+    <link rel="stylesheet" href="{% static 'todoapp/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>To-Do Manager</h1>
+    </header>
+    <main class="container">
+        <section class="task-list">
+            <h2>Your Tasks</h2>
+            <ul>
+                {% for task in tasks %}
+                <li class="task-item">
+                    <div class="task-header">
+                        <h3>{{ task.title }}</h3>
+                        <span class="priority {{ task.priority|lower }}">{{ task.priority }}</span>
+                    </div>
+                    <p class="task-category">Category: {{ task.category.name }}</p>
+                    <p class="task-status">Status: {{ task.status }}</p>
+                    <p class="task-due-date">Due: {{ task.due_date|date:"d M Y" }}</p>
+                    <p class="task-comments">{{ task.comments }}</p>
+                    <ul class="subtasks">
+                        {% for subtask in task.subtasks.all %}
+                        <li class="subtask {{ 'completed' if subtask.is_completed else '' }}">
+                            {{ subtask.title }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2025 To-Do Manager</p>
+    </footer>
+</body>
+</html>
