@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib import admin
 
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -41,9 +40,3 @@ class SubTask(models.Model):
 
     def __str__(self):
         return self.title
-
-
-# Register models in the admin panel
-admin.site.register(Category)
-admin.site.register(Task)
-admin.site.register(SubTask)
