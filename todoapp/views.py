@@ -7,5 +7,4 @@ from .models import Task
     # return HttpResponse('Hello, World!')
 
 def task_list(request):
-    tasks = Task.objects.prefetch_related('subtasks').all()
-    return render(request, 'todoapp/task_list.html', {'tasks': tasks})
+    return render(request, 'todoapp/task_list.html')

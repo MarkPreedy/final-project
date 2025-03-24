@@ -15,6 +15,7 @@
         <section class="task-list">
             <h2>Your Tasks</h2>
             <ul>
+                {% load static %}
                 {% for task in tasks %}
                 <li class="task-item">
                     <div class="task-header">
